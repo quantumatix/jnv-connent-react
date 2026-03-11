@@ -11,8 +11,8 @@ export interface User {
 }
 
 export interface TokenResponse {
-    access_token: string;
-    token_type: string;
+    accessToken: string;
+    tokenType: string;
 }
 
 // ── Groups ───────────────────────────────────────────────────────────────────
@@ -64,14 +64,14 @@ export interface Message {
 
 export interface CursorPage<T> {
     items: T[];
-    next_cursor: string | null;
-    has_more: boolean;
+    nextCursor: string | null;
+    hasMore: boolean;
 }
 
 // ── WebSockets ───────────────────────────────────────────────────────────────
 
 export interface WSEvent {
-    event_type: 'NEW_MESSAGE' | 'NEW_REPLY';
+    eventType: 'NEW_MESSAGE' | 'NEW_REPLY';
     groupId: string;
     message: Message;
 }

@@ -30,7 +30,7 @@ export function GroupChatPage() {
 
     const [replyTarget, setReplyTarget] = React.useState<Message | null>(null);
     const [isCreateGroupOpen, setIsCreateGroupOpen] = React.useState(false);
-    const [createGroupForm, setCreateGroupForm] = React.useState<CreateGroupPayload>({ name: '', description: '', is_private: false });
+    const [createGroupForm, setCreateGroupForm] = React.useState<CreateGroupPayload>({ name: '', description: '', isPrivate: false });
     const [createGroupError, setCreateGroupError] = React.useState('');
 
     const handleCreateGroup = async (e: React.FormEvent) => {
@@ -40,9 +40,9 @@ export function GroupChatPage() {
             return;
         }
         try {
-            const group = await createGroup({ name: createGroupForm.name.trim(), description: createGroupForm.description, is_private: createGroupForm.is_private });
+            const group = await createGroup({ name: createGroupForm.name.trim(), description: createGroupForm.description, isPrivate: createGroupForm.isPrivate });
             setIsCreateGroupOpen(false);
-            setCreateGroupForm({ name: '', description: '', is_private: false });
+            setCreateGroupForm({ name: '', description: '', isPrivate: false });
             setCreateGroupError('');
             navigate(`/groups/${group._id}`);
         } catch (err: unknown) {

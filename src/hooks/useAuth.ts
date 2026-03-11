@@ -15,11 +15,11 @@ export function useAuth() {
             // In a real app we'd fetch the user profile here using the token,
             // but since we need it in standard apps, I will implement a fetch inside the mutation
             // We will actually just set the token first, then fetch user profile using userApi
-            useAuthStore.setState({ token: tokenResponse.access_token });
+            useAuthStore.setState({ token: tokenResponse.accessToken });
 
             const { userApi } = await import('@/api/userApi');
             const user = await userApi.getMe();
-            setAuth(user, tokenResponse.access_token);
+            setAuth(user, tokenResponse.accessToken);
         },
     });
 

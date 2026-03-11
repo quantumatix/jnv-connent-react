@@ -12,9 +12,9 @@ export function useMessages(groupId: string | undefined) {
             return messageApi.listMessages(groupId, pageParam, 20);
         },
         getNextPageParam: (lastPage: CursorPage<Message>) => {
-            // next_cursor = oldest message's createdAt in the current page
+            // nextCursor = oldest message's createdAt in the current page
             // passing it fetches messages older than the current window
-            return lastPage.has_more ? lastPage.next_cursor : undefined;
+            return lastPage.hasMore ? lastPage.nextCursor : undefined;
         },
         initialPageParam: null,
         enabled: !!groupId,

@@ -86,7 +86,7 @@ export function GroupsPage() {
     const [activeTab, setActiveTab] = React.useState<'my_groups' | 'discover'>('my_groups');
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const [joiningId, setJoiningId] = React.useState<string | null>(null);
-    const [form, setForm] = React.useState({ name: '', description: '', is_private: false });
+    const [form, setForm] = React.useState({ name: '', description: '', isPrivate: false });
     const [formError, setFormError] = React.useState('');
 
     const handleJoin = async (id: string) => {
@@ -109,9 +109,9 @@ export function GroupsPage() {
         }
         setFormError('');
         try {
-            await createGroup({ name: form.name.trim(), description: form.description.trim(), is_private: form.is_private });
+            await createGroup({ name: form.name.trim(), description: form.description.trim(), isPrivate: form.isPrivate });
             setIsModalOpen(false);
-            setForm({ name: '', description: '', is_private: false });
+            setForm({ name: '', description: '', isPrivate: false });
         } catch (err: any) {
             setFormError(err?.response?.data?.detail || 'Failed to create group');
         }
@@ -274,11 +274,11 @@ export function GroupsPage() {
                             <input
                                 type="checkbox"
                                 className="sr-only"
-                                checked={form.is_private}
-                                onChange={(e) => setForm((f) => ({ ...f, is_private: e.target.checked }))}
+                                checked={form.isPrivate}
+                                onChange={(e) => setForm((f) => ({ ...f, isPrivate: e.target.checked }))}
                             />
-                            <div className={`w-10 h-6 rounded-full transition-colors ${form.is_private ? 'bg-primary' : 'bg-muted'}`}>
-                                <div className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-transform ${form.is_private ? 'translate-x-5' : 'translate-x-1'}`} />
+                            <div className={`w-10 h-6 rounded-full transition-colors ${form.isPrivate ? 'bg-primary' : 'bg-muted'}`}>
+                                <div className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-transform ${form.isPrivate ? 'translate-x-5' : 'translate-x-1'}`} />
                             </div>
                         </div>
                         <div>

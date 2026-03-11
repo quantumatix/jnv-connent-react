@@ -4,7 +4,7 @@ import type { Group, GroupMember } from '@/types';
 export interface CreateGroupPayload {
     name: string;
     description?: string;
-    is_private?: boolean;
+    isPrivate?: boolean;
 }
 
 export const groupApi = {
