@@ -1,0 +1,29 @@
+{
+    "name": "JNV Connect Messaging",
+    "short_name": "JNV Connect",
+    "description": "Real-time group messaging for your community",
+    "theme_color": "#4f46e5",
+    "background_color": "#0f172a",
+    "display": "standalone",
+    "start_url": "/",
+    "scope": "/",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/pwa-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/pwa-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/pwa-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
