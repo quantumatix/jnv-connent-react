@@ -33,10 +33,21 @@ class SocketManager {
 
         this.onStatusChange?.('connecting');
 
-        // Assumes Vite proxy forwards /ws to the backend
-        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-        const host = window.location.host; // Uses vite proxy in dev
-        let wsUrl = `${protocol}//${host}/ws/groups/${this.groupId}`;
+        // In production, use VITE_WS_URL absolute path if provided.
+        // Otherwise fallback to building it off window.location.host (works well with local proxy)
+        let wsBase = import.meta.env.VITE_WS_URL;
+        if (!wsBase) {
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const host = window.location.host;
+            wsBase = `${protocol}//${host}/ws`;
+        }
+        
+        // Remove trailing slash if present
+        if (wsBase.endsWith('/')) {
+            wsBase = wsBase.slice(0, -1);
+        }
+
+        let wsUrl = `${wsBase}/groups/${this.groupId}`;
 
         if (this.token) {
             wsUrl += `?token=${encodeURIComponent(this.token)}`;

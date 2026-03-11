@@ -3,7 +3,7 @@ import { useAuthStore } from '@/store/authStore';
 
 // We rely on Vite Proxy in dev: '/api' -> 'http://localhost:8000/api'
 export const apiClient = axios.create({
-    baseURL: '/api/v1',
+    baseURL: import.meta.env.VITE_API_URL || '/api/v1',
     headers: {
         'Content-Type': 'application/json',
     },
