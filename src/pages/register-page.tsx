@@ -12,7 +12,7 @@ export function RegisterPage() {
     const [form, setForm] = React.useState({
         username: '',
         email: '',
-        display_name: '',
+        displayName: '',
         password: '',
     });
 
@@ -75,12 +75,12 @@ export function RegisterPage() {
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <Input
-                            id="display_name"
+                            id="displayName"
                             type="text"
                             label="Display Name"
                             placeholder="Your Name"
-                            value={form.display_name}
-                            onChange={handleChange('display_name')}
+                            value={form.displayName}
+                            onChange={handleChange('displayName')}
                             required
                             minLength={1}
                             maxLength={64}
